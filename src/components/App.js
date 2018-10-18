@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './header/Header';
 import LandingJumbotron from './landingJumbotron/LandingJumbotron'
-import Footer from './footer/Footer';
 import TodaysSelection from './todaysSelection/TodaysSelection'
+import Privacy from './privacy/Privacy';
+import Footer from './footer/Footer';
 import '../css/main.css'
 import '../sass/main.scss'
 
@@ -11,6 +12,7 @@ const App = () => (
         <Header />
         <LandingJumbotron />
         <TodaysSelection/>
+        <Privacy />
         <Footer />
       </div>
 )
