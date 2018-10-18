@@ -1,0 +1,22 @@
+.todays-bgimage {
+  background: url("../img/2_florida.png") fixed;
+  margin: 0;
+  position: absolute;
+}
+
+.white-overlay {
+  background-color: rgba(white, 0.5);
+  padding: 30px;
+  margin: 30px;
+  border-radius: 15px;
+  position: relative;
+  width: auto;
+}
+
+.first-row {
+  margin: 30px 0 30px 0;
+}
+
+.second-row {
+  margin: 0;
+}
