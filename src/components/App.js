@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from './header/Header';
-import Main from './main/Main';
+import Privacy from './privacy/Privacy';
 import Footer from './footer/Footer';
 
 const App = () => (
       <div>
         <Header />
-        <Main />
+        <Privacy />
         <Footer />
-
       </div>
 )
 
