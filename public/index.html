@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="stylesheet" href="../src/css/main.css">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <div id="root">
-      
-    </div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <h2>Formulario get</h2>
+    <form action="/api/getVids" method="get">
+        <button type="submit">Get!</button>
+    </form>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <br/>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    <h2>Register here</h2>
+    <form action="/api/register" method="post">
+        <input type="email" placeholder="email" name="username" required/>
+        <input type="password" placeholder="password" name="psw" required/><br/>
+        <input type="text" placeholder="Nombre Completo" name="nombreCompleto" required/><br/>
+        <input type="radio" name="type" value="1">Pro<br/>
+        <input type="radio" name="type" value="2">Creative<br/>
+        <input type="radio" name="type" value="3">Free<br/>
+        <input type="text" name="img" value="./miFoto.jpg" /><br/>
+        <button type="submit">Register</button>
+    </form>
+
+
+    <h2>Login here</h2>
+    <form action="/api/login" method="post">
+        <input type="text" placeholder="username" name="username" required/>
+        <input type="password" placeholder="password" name="psw" required/>
+        <button type="submit">Register</button>
+    </form>
+
+
+    <h2>Sube tu video</h2>
+    <form action="/api/uploadVid" method="post">
+        <input type="text" value="5bc7e548e7179a4377fdc97d" name="user_id"><br/>
+        <input type="text" placeholder="Nombre del video" name="nomClip" required/><br/>
+        <input type="text" placeholder="URL del video" name="url" required/><br/>
+        <input type="text" placeholder="Descripcion del video" name="descripcion" required/><br/>
+        <input type="text" placeholder="Genero del video" name="genero" required/><br/>
+        <input type="radio" name="licencia" value="1">Si
+        <input type="radio" name="licencia" value="2">No<br/>
+        <input type="text" placeholder="Autor del video" name="autor" required/><br/>
+        <input type="text" value="25" name="vistas" required/><br/>
+        <button type="submit">Upload</button>
+    </form>
+
+
+
+
+</body>
 </html>
