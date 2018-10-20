@@ -1,0 +1,45 @@
+@import './_pantone.scss';
+
+.ourplans1 {
+    background: url("../img/arena.jpg") no-repeat center center fixed; 
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+.ourplans2{
+    background: rgba(207, 203, 187, 0.5);
+    border-bottom-left-radius:2%;
+    border-top-right-radius:2%;
+    border-bottom-right-radius:2%;
+    border-top-left-radius:2%;
+
+}
+.CardTitle{
+    font-style: bold;
+}
+.content{
+    background:rgba(207, 203, 187, 0.5);
+    border-radius: 2%;
+    text-align: center;
+}
+
+#cards {
+    border-radius: 10%;
+    height: auto;
+}
+
+.bntregister{
+    align-items: center;
+    background-color: #00677D;
+    color: white;
+    margin-left: 50%;
+}
+.fa-li{
+    color: #00677D
+}
+
