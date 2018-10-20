@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  </head>
+</head>
 <body>
 
     <h2>Formulario get</h2>
@@ -26,12 +25,14 @@
         <button type="submit">Register</button>
     </form>
 
+
     <h2>Login here</h2>
     <form action="/api/login" method="post">
         <input type="text" placeholder="username" name="username" required/>
         <input type="password" placeholder="password" name="psw" required/>
         <button type="submit">Register</button>
     </form>
+
 
     <h2>Sube tu video</h2>
     <form action="/api/uploadVid" method="post">
@@ -46,6 +47,13 @@
         <input type="text" value="25" name="vistas" required/><br/>
         <button type="submit">Upload</button>
     </form>
+
+    <h2>Busca un video</h2>
+   <form action="/api/search" method="post">
+    <input type="text" name="search">
+    <button type="submit">Search</button>    
+    </form>
+
 
 </body>
 </html>

@@ -3,7 +3,9 @@ const bodyParser = require('body-parser')
 const app     = express();
 const port    = 3000;
 
-const path    = require('path'); //may not be required on production
+
+//may not be required on production
+// const path    = require('path'); 
 
 
 // MONGODB
@@ -11,43 +13,62 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://admin:admin12@ds045557.mlab.com:45557/beduplayer';
 const dbName = 'beduplayer';
 
-//Cuando se envía un REST lleva un header y un body
-//toods los paquetes tienen un cuerpo y un header, y para que
-//convierta los requests a json
-
 //Usar body parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+//TURN OFF TO TRY IN PROD
+        // app.get('/', function (req, res) {  
+        //     res.sendFile(path.join(__dirname+'/public/index.html'));
+        // })
 
-//Método de render por default
-// app.get('/', function (req, res) {
-//     res.send("welcome home");
-// });
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname+'/public/index.html'));
-})
 
+//RETURNS VIDEOS FOR THE "TODAYS SELECTION" SECTION
 app.get('/api/getVids', function (req, res) {
 
     MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
         if (err) throw err;
 
         let dbo = db.db(dbName);
-        dbo.collection('film').find({}).limit(5).toArray(function(err, docs) {
+        dbo.collection('film').find({}).limit(6).toArray(function(err, docs) {
             if (err) throw err;
             res.send(docs)
         })
-
         db.close()
     })
-
-    // res.send('Get method on Mongo.')
 })
 
+//SEARCHES A SPECIFIC VIDEO
+/***NOTE: ENDPOINT EXPECTS KEY VALUE PAIR {search: video2search} IN THE BODY OF REQUEST */
+app.post('/api/search', function (req, res) {
 
+    if (!req.body.search) res.send("search fiel is empty, please try again.");
+
+    let query = new RegExp(req.body.search);
+    console.log(query);
+
+    MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
+        if (err) throw err;
+
+        let dbo = db.db(dbName);
+        dbo.collection('film').find({nomClip: query}).toArray(function(err, docs) {
+            if (err) throw err;
+            res.send(docs)
+        })
+        db.close()
+    })
+})
+
+//GET SIGLE VIDEO BY ID is not working!!
+        // app.get('/api/search/:id', function (req, res) {
+        //     res.send(req.params.id);
+        // });
+
+
+//REGISTER A NEW USER
+/***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {email: myemail@me.com} IN THE BODY OF REQUEST */
 app.post('/api/register', function (req, res) {
-
+    
     MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
         if (err) throw err;
 
@@ -56,13 +77,13 @@ app.post('/api/register', function (req, res) {
             if (err) throw err;
             console.log("1 document inserted");
         });
+        res.send('User added to the database successfully');
         db.close();
-    });
-
-    res.send('Usuario ingreso correctamente');
-    // res.send(req.body);
+    });  
 });
 
+//LOGIN USER
+/***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {email: myemail@me.com} IN THE BODY OF REQUEST */
 app.post('/api/login', function (req, res) {
 
     let user = false;
@@ -76,7 +97,7 @@ app.post('/api/login', function (req, res) {
 
             if (result.psw == req.body.psw){
                 user = true;
-                res.send(`this is user: ${user}`);
+                res.send(`${user} logged in correctly`);
             }
             else
                 res.send('incorrect username/password, please try again.');
@@ -85,8 +106,10 @@ app.post('/api/login', function (req, res) {
     });
 });
 
+//UPLOAD A NEW VIDEO
+/***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {nomClib: myvid} IN THE BODY OF REQUEST */
 app.post('/api/uploadVid', function (req, res) {
-
+    
     MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
         if (err) throw err;
 
@@ -95,15 +118,12 @@ app.post('/api/uploadVid', function (req, res) {
             if (err) throw err;
             console.log("1 document inserted");
         });
+        res.send('Video was successfully uploaded.');
         db.close();
     });
-
-    res.send('Usuario ingreso correctamente');
-    // res.send(req.body);
 });
-
-
 
 app.listen(port, function () {
     console.log(`Listening to port: ${port}.`)
 })
+
