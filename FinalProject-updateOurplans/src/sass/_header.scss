@@ -1,0 +1,23 @@
+@import './_pantone.scss';
+
+.logotext {
+  color: white;
+  font-weight: 300;
+}
+
+.loginbutton {
+  background-color: $deep;
+  border: none;
+  font-size: 15px;
+}
+
+.header {
+  background-color: $king;
+}
+
+.searchbutton {
+  background-color: white;
+  border-top: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}

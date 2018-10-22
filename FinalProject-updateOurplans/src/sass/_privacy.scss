@@ -1,0 +1,20 @@
+.privacy-main{
+  background: url("../img/4_clouds.jpg") fixed;
+  padding: 50px;
+}
+
+.privacy-text {
+  background-color: rgba(white, 0.5);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.privacy-hrline {
+  border: 2px solid $deep;
+}
+
+.privacy-button{
+  background-color: $king;
+  border: none;
+  padding: 15px 20px 15px 20px;
+}

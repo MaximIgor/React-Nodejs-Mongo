@@ -5,7 +5,6 @@ import TodaysSelection from './todaysSelection/TodaysSelection'
 import GetAPlan from './getAPlan/GetAPlan'
 import Privacy from './privacy/Privacy';
 import OurPlans from './OurPlans/ourplans';
-import Last from './Last/last'
 import Footer from './footer/Footer';
 import '../sass/main.scss'
 
@@ -17,7 +16,6 @@ const App = () => (
         <GetAPlan/>
         <Privacy />
         <OurPlans/>
-        <Last/>
         {/*<Footer />*/}
     </div>
 )
