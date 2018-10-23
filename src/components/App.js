@@ -16,8 +16,11 @@ const App = () => (
         <TodaysSelection/>
         <GetAPlan/>
         <Privacy />
+<<<<<<< HEAD
         <OurPlans/>
         <Last/>
+=======
+>>>>>>> 9074c3ca6ca83707e5a5297b527ee9fd1203d367
         {/*<Footer />*/}
     </div>
 )
