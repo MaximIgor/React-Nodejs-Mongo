@@ -1,7 +1,7 @@
-@import "../resources/pantone";
+@import "../modules/pantone";
 
 .todays-bgimage {
-  //background: url("../img/2_florida.png") fixed;
+  background: url("../img/2_florida.png") fixed;
   background: rgba($sand, 0.5);
   margin: 0;
   padding: 40px;
