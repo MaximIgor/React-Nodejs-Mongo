@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'reactstrap'
 
 const Header = () => (
-    <div className="container-fluid header py-3">
+    <div className="container-fluid header py-3 sticky-top">
         <Container className="align-items-md-center">
             <Row className="py-3">
                 <Col>
