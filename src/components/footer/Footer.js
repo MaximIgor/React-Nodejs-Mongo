@@ -13,32 +13,32 @@ const Footer = () => (
                 </div>
                 <div className="col-sm mt-3">
                     <h5>artLocus</h5>
-                        <li>home</li>
-                        <li>About us</li>
-                        <li>staff picks</li>
-                        <li>artLocus on-demad</li>
-                        <li>Site map</li>
-                        <li>Upload</li> 
+                        <li class="lista" >home</li>
+                        <li class="lista" >About us</li>
+                        <li class="lista">staff picks</li>
+                        <li class="lista">artLocus on-demad</li>
+                        <li class="lista">Site map</li>
+                        <li class="lista">Upload</li> 
                 </div>
                 <div className="col-sm mt-3">
                     <h5>Security</h5>
-                        <li>Propietary secsys</li>
-                        <li>Privacy policy</li>
-                        <li>DRM</li>
-                        <li>Cookies</li>
+                        <li class="lista">Propietary secsys</li>
+                        <li class="lista">Privacy policy</li>
+                        <li class="lista">DRM</li>
+                        <li class="lista">Cookies</li>
                 </div>
                 <div className="col-sm mt-3">
                     <h5>Resources</h5>
-                        <li>Help center</li>
-                        <li>Video school</li>
-                        <li>Developers</li>
-                        <li>Studens</li>
-                        <li>Directors</li>
+                        <li class="lista">Help center</li>
+                        <li class="lista">Video school</li>
+                        <li class="lista">Developers</li>
+                        <li class="lista">Studens</li>
+                        <li class="lista">Directors</li>
                 </div>
                 <div className="col-sm mt-3">
                     <h5>Careers</h5>
-                        <li>Employement</li>
-                        <li>Parners</li>
+                        <li class="lista">Employement</li>
+                        <li class="lista">Parners</li>
                 </div>
             </div>
          </div>
