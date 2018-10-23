@@ -1,0 +1,29 @@
+@import "./_pantone.scss";
+*{
+    color: white;
+    font-size: x-small;
+}
+.principal{
+    background-color: $deep;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover
+}
+hr{
+    border: 2px solid $king;
+}
+.col-lg{
+    margin-left: 0;
+    position: relative;
+    right: 5%;
+}
+h5>li, h4>li{
+    list-style: none;
+    justify-content: center;
+}
+
+
