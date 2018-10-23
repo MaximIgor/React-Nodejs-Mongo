@@ -1,1 +1,2 @@
-Recuerda hacer git pull origin master antes de comenzar a hacer cambios.
+1. Recuerda hacer git pull antes de comenzar a hacer cambios.
+2. No hagas push al master.
