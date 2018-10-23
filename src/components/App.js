@@ -4,8 +4,7 @@ import LandingJumbotron from './landingJumbotron/LandingJumbotron'
 import TodaysSelection from './todaysSelection/TodaysSelection'
 import GetAPlan from './getAPlan/GetAPlan'
 import Privacy from './privacy/Privacy';
-import OurPlans from './OurPlans/ourplans';
-import Last from './Last/last'
+import Ourplans from './ourPlans/Ourplans';
 import Footer from './footer/Footer';
 import '../sass/main.scss'
 
@@ -16,9 +15,8 @@ const App = () => (
         <TodaysSelection/>
         <GetAPlan/>
         <Privacy />
-        <OurPlans/>
-        <Last/>
-        {/*<Footer />*/}
+        <Ourplans/>
+        <Footer/>
     </div>
 )
 
