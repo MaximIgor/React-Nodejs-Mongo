@@ -1,13 +1,13 @@
-@import './_pantone.scss';
-@import './_fonts.scss';
+@import 'resources/pantone';
+@import 'resources/fonts';
 
-@import "./_header.scss";
-@import "./_landingJumbotron.scss";
-@import "./_todaysSelection.scss";
-@import "./_getAPlan.scss";
-@import "./_ourplans.scss";
-@import "./_footer";
-@import "./_privacy.scss";
+@import "components/header";
+@import "components/landingJumbotron";
+@import "components/todaysSelection";
+@import "components/getAPlan";
+@import "components/ourplans";
+@import "components/footer";
+@import "components/privacy";
 
 body {
   font-family: $font;
