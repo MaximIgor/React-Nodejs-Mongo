@@ -1,13 +1,13 @@
-@import 'resources/pantone';
-@import 'resources/fonts';
+@import "./modules/pantone";
+@import "./modules/fonts";
 
-@import "components/header";
-@import "components/landingJumbotron";
-@import "components/todaysSelection";
-@import "components/getAPlan";
-@import "components/ourplans";
-@import "components/footer";
-@import "components/privacy";
+@import "./partials/header";
+@import "./partials/landingJumbotron";
+@import "./partials/todaysSelection";
+@import "./partials/getAPlan";
+@import "./partials/privacy";
+@import "./partials/ourPlans";
+@import "./partials/footer";
 
 body {
   font-family: $font;
