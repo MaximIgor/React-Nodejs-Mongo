@@ -8,8 +8,8 @@ const Ourplans= () => (
         
         <div className="ourplans2 d-flex justify-content-center mb-4">
         <Col md="9">
-            <h2 className="d-flex justify-content-center mt-3"><bold> Our plans</bold> </h2>
-            <h4 className="d-flex justify-content-center mb-4">There is so much more we want to tell you about.</h4>
+            <span className="d-flex justify-content-center mt-3 h2">Our plans</span>
+            <span className="d-flex justify-content-center mb-4">There is so much more we want to tell you about.</span>
             <div>
             <CardDeck id="cards">
                  <Card className="content">
