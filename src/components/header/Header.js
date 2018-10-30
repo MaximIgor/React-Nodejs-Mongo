@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Breadcrumb, BreadcrumbItem, Input, FormGroup, Label, Form} from 'reactstrap'
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
 
@@ -38,7 +39,7 @@ class Header extends React.Component {
                             <Col className="input-group align-items-md-center">
                                 <input type="text" className="form-control" placeholder="Search"/>
                                 <div className="input-group-append">
-                                    <button className="btn searchbutton" type="submit"><span className="fas fa-search"></span></button>
+                                    <button className="btn searchbutton" type="submit"><Link to='/searchResults'><span className="fas fa-search"></span></Link></button>
                                 </div>
                             </Col>
                             <Col md="6 a">
