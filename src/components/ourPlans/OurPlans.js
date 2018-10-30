@@ -1,8 +1,7 @@
 import React from 'react';
-import { Row, Col, Card, Button, CardTitle, CardText, CardDeck,
-    CardSubtitle, CardBody } from 'reactstrap';
+import { Row, Col, Card, Button, CardTitle, CardText, CardDeck, CardSubtitle, CardBody } from 'reactstrap';
 
-const Ourplans= () => (
+const OurPlans = () => (
     <div className="ourplans1">
     <Row className="d-flex justify-content-center">
         
@@ -67,4 +66,4 @@ const Ourplans= () => (
     </div>
 )
 
-export default Ourplans;
+export default OurPlans;

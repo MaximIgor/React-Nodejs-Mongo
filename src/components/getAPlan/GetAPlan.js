@@ -10,7 +10,7 @@ const GetAPlan = () => (
                 From watching new pieces of art to monetization of your work is easier than any video streaming
                 platform. We make all the hard work for you.
             </p>
-            <a className="gap-link card-link" href="#">Find out more about our monetization plans.</a>
+            <a className="gap-link card-link" href="./profile:id">Find out more about our monetization plans.</a>
             <br/><br/><br/><br/><br/>
             <hr className="gap-hrline"/>
             <p>
