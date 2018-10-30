@@ -3,17 +3,17 @@ import LandingJumbotron from '../landingJumbotron/LandingJumbotron';
 import TodaysSelection from '../todaysSelection/TodaysSelection'
 import GetAPlan from '../getAPlan/GetAPlan'
 import Privacy from '../privacy/Privacy'
-import Ourplans from '../ourPlans/Ourplans'
+import OurPlans from '../ourPlans/OurPlans'
 
 
-const MainLainding = () => (
+const MainLanding = () => (
     <div>
         <LandingJumbotron />
         <TodaysSelection/>
         <GetAPlan/>
         <Privacy />
-        <Ourplans/>
+        <OurPlans/>
     </div>
 )
 
-export default MainLainding;
+export default MainLanding;

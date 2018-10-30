@@ -1,0 +1,15 @@
+@import "../modules/pantone";
+@import "../modules/fonts";
+
+.profile-progress {
+  margin-left: 3%;
+  position: relative;
+}
+
+.profile-float {
+  width: 100%;
+}
+
+.profile-chart {
+  font-family: $font;
+}
