@@ -1,0 +1,14 @@
+{
+  "name": "bedu",
+  "version": "0.0.0",
+  "description": "Bedu",
+  "main": "server.js",
+  "author": "Bedu",
+  "dependencies": {
+    "body-parser": "~1.5.2",
+    "express": "~4.7.2",
+    "method-override": "~2.1.2",
+    "mongodb": "^3.1.8",
+    "morgan": "~1.2.2"
+  }
+}
