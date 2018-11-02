@@ -1,27 +1,56 @@
 import React from 'react';
-import { Button, Row, Col } from 'reactstrap'
+import { Button } from 'reactstrap'
+import YouTube from 'react-youtube'
 
-const LandingJumbotron = () => (
-    <Row className="container-fluid jumbotron-main">
-        <div className="overlay">
-            <Col md="12" className="text-center">
-                <h2 className="jumbotron-title">
-                    The place for your <br/>
-                    cinematographic masterpiece.
-                </h2>
-            </Col>
-            <Col md="12">
-                <p className="jumbotron-text text-center my-0">
-                    artLocus makes it easy for new or experienced creators to share <br/>
-                    film artworks. We give you the tools for making your creations <br/>
-                    reach those who you want to reach.
-                </p>
-            </Col>
-            <Col md="12" className="d-flex align-items-center justify-content-center">
-                <Button className="jumbotron-button py-3 px-4">Find out more</Button>
-            </Col>
+class LandingJumbotron extends React.Component {
+
+  _onReady(event) {
+    event.target.mute();
+    event.target.playVideo()
+    event.target.getPlayerState()
+    event.target.setPlaybackQuality('default')
+  }
+
+  render() {
+
+    const opts = {
+      height: '100%',
+      width: '100%',
+      playerVars: {
+        autoplay: 1,
+        color: 'white',
+        disablekb: 1,
+        loop: 1,
+        modestbranding: 1,
+        rel: 0,
+        iv_load_policy: 3,
+        fs: 0,
+        controls: 0,
+        playlist: 'katIJ9Oabb8',
+        end: '163'
+      }
+    };
+
+    return (
+      <section className="jumbotron-main container-fluid">
+
+        <YouTube className="jumbotron-video" opts={opts} videoId="katIJ9Oabb8" frameBorder="0" onReady={this._onReady}/>
+
+        <div className="jumbotron-overlay"/>
+
+        <div className="d-flex align-items-center justify-content-center flex-column">
+          <div>
+            <h2 className="text-center jumbotron-title">
+              The place for your cinematographic masterpiece.
+            </h2>
+          </div>
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            <Button className="jumbotron-button py-2 px-3">Find out more</Button>
+          </div>
         </div>
-    </Row>
-)
+      </section>
+    );
+  }
+}
 
 export default LandingJumbotron;

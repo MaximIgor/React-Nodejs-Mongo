@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
 
 const TodaysSelection = () => (
-    <div className="todays-bgimage">
+    <div className="todays-bg">
         <div className="white-overlay">
             <Row>
                 <Col md="12" className="text-center">
@@ -18,9 +18,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -29,9 +26,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -40,9 +34,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -53,9 +44,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -64,9 +52,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
@@ -75,9 +60,6 @@ const TodaysSelection = () => (
                         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                         <CardBody>
                             <CardTitle>Film title</CardTitle>
-                            <CardSubtitle>Author: John Smith</CardSubtitle>
-                            <CardText>Synopsis: A quick brown fox jumps over the lazy dog.</CardText>
-                            <Button>Play</Button>
                         </CardBody>
                     </Card>
                 </Col>
