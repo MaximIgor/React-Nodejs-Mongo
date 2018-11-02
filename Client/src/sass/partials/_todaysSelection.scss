@@ -1,14 +1,13 @@
 @import "../modules/pantone";
 
-.todays-bgimage {
-  background: url("../img/2_florida.png") fixed;
-  background: rgba($sand, 0.5);
+.todays-bg {
+  background: url("../img/9_lens.jp2") no-repeat bottom center;
   margin: 0;
   padding: 40px;
 }
 
 .white-overlay {
-  background-color: rgba(white, 0.5);
+  background-color: rgba($sand, 0.15);
   padding: 30px;
   border-radius: 15px;
   position: relative;
