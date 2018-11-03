@@ -12,6 +12,7 @@ let methodOverride = require('method-override');
 const MongoClient = require('mongodb').MongoClient;	
 // Connection URL
 const url = database.url;
+
 			
 app.use(morgan('dev')); 										
 app.use(bodyParser.urlencoded({'extended':'true'})); 			
@@ -20,7 +21,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 // routes ======================================================================
-require('./app/routes.js')(app,MongoClient,url);
+require('./app/routes.js')(app,MongoClient,url,database);
 
 // server run port    ==========================================================
 app.listen(port,() => {
