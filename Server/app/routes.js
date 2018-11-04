@@ -48,8 +48,6 @@ app.post('/api/autenticate', function(req, res) {
 					success: true,
 					message: 'Enjoy your token!',
 					token: token
-
-
 				})
 			}
 		}

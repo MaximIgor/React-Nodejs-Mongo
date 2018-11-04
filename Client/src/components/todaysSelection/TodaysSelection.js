@@ -1,8 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Row, Col } from 'reactstrap';
-import { Card, CardImg, CardBody, CardTitle } from 'reactstrap';
+import UnaCard from './UnaCard/UnaCard';
 
-const TodaysSelection = () => (
+
+class TodaysSelection extends Component {
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+            docsArray: []
+        };
+
+        this.printCards = this.printCards.bind(this);
+    };
+
+    printCards() {
+        let i=0;
+        let myArray ={...this.state.docsArray};
+
+        let cardArray = [];
+
+        for (i=0; i<6;i++){
+            let singleClip = {...myArray[i]};
+            cardArray.push(<UnaCard name={singleClip.nomClip} desc={singleClip.descripcion} />);      
+        }   
+        return cardArray
+    }
+
+    componentDidMount(){
+        
+        fetch("/api/getVids")
+        .then((resp)=>resp.json())    
+        .then((data)=>this.setState({docsArray: {...data}}))        
+        .catch(error => console.error(error));
+    }
+
+    render(){
+
+        return (
+
     <div className="todays-bg">
         <div className="white-overlay">
             <Row>
@@ -12,60 +49,14 @@ const TodaysSelection = () => (
                     <span>Watch today's top rated films.</span>
                 </Col>
             </Row>
-            <Row className="first-row">
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
+            <Row className="first-row">           
+                {this.printCards()}
             </Row>
-            <Row className="second-row">
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
-                <Col md="4">
-                    <Card>
-                        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                        <CardBody>
-                            <CardTitle>Film title</CardTitle>
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
+            {/* <Row className="first-row">           
+                {this.printCards(3)}
+            </Row> */}
         </div>
     </div>
-)
+        )}};
 
 export default TodaysSelection;
