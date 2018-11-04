@@ -42,6 +42,9 @@ app.get('/api/getVids', function (req, res) {
 /***NOTE: ENDPOINT EXPECTS KEY VALUE PAIR {search: video2search} IN THE BODY OF REQUEST */
 app.post('/api/search', function (req, res) {
 
+    console.log(req.body);
+    
+
     if (!req.body.search) res.send("search fiel is empty, please try again.");
 
     let query = new RegExp(req.body.search);

@@ -9,21 +9,30 @@ class Header extends React.Component {
         this.state = {
             modalToggle: false,
             login: false,
-            register: true
+            register: true,
+            search: ''
         };
 
-        this.toggle = this.toggle.bind(this);
-        this.loginToggle = this.loginToggle.bind(this);
+        // this.toggle = this.toggle.bind(this);
+        // this.loginToggle = this.loginToggle.bind(this);
     }
 
-    toggle() {
+    toggle= () => {
         this.setState({
             modalToggle: !this.state.modalToggle
         });
     }
 
-    loginToggle() {
+    loginToggle = () => {
         this.setState({login: !this.state.login})
+    }
+
+    searchInput = (event) =>{        
+        this.setState({
+            search: event.target.value
+        });
+        console.log(this.state.search);
+        
     }
 
     render() {
@@ -37,9 +46,9 @@ class Header extends React.Component {
 
                         <Row className="align-items-md-center">
                             <Col className="input-group align-items-md-center">
-                                <input type="text" className="form-control" placeholder="Search"/>
+                                <input type="text" className="form-control" placeholder="Search" onChange={(e)=>this.searchInput(e)}/>
                                 <div className="input-group-append">
-                                    <button className="btn searchbutton" type="submit"><Link to='/searchResults'><span className="fas fa-search"></span></Link></button>
+                                    <button className="btn searchbutton" type="submit"><Link to={`/searchResults/${this.state.search}`}><span className="fas fa-search"></span></Link></button>
                                 </div>
                             </Col>
                             <Col md="6 a">

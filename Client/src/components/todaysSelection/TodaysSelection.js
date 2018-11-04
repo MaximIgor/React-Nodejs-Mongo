@@ -16,12 +16,11 @@ class TodaysSelection extends Component {
     };
 
     printCards() {
-        let i=0;
         let myArray ={...this.state.docsArray};
 
         let cardArray = [];
 
-        for (i=0; i<6;i++){
+        for (let i=0; i<6;i++){
             let singleClip = {...myArray[i]};
             cardArray.push(<UnaCard name={singleClip.nomClip} desc={singleClip.descripcion} />);      
         }   
@@ -52,9 +51,6 @@ class TodaysSelection extends Component {
             <Row className="first-row">           
                 {this.printCards()}
             </Row>
-            {/* <Row className="first-row">           
-                {this.printCards(3)}
-            </Row> */}
         </div>
     </div>
         )}};
