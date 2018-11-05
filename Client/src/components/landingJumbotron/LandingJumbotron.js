@@ -14,7 +14,7 @@ class LandingJumbotron extends React.Component {
         event.target.mute()
         event.target.playVideo()
         event.target.setPlaybackQuality('default')
-        this.loaded = event.target.getPlayerState()
+        // this.state.loaded = event.target.getPlayerState()
       },
 
       loaded: false,
