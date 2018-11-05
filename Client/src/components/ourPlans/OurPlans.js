@@ -18,10 +18,9 @@ const OurPlans = () => (
                     <CardText className="d-flex justify-content-center align-items-center">
                          <ul className="fa-ul">
                             <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Unlimited video views</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Video on demand access</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Video on-demand access</li>
                             <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Rate your favorite videos</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Limited to one upload every
-                            two monts</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Limited to one upload every two months</li>
                         </ul>
                     </CardText>
                     <Button className="bntregister d-flex align-items-end">Register</Button>
@@ -30,12 +29,12 @@ const OurPlans = () => (
                 <Card className="content">
                     <CardBody>
                     <CardTitle className="d-flex justify-content-center">Creative</CardTitle>
-                    <CardSubtitle className="d-flex justify-content-center mb-4">For ambitious creative prodeucers and dreamers</CardSubtitle>
+                    <CardSubtitle className="d-flex justify-content-center mb-4">For ambitious creative producers and dreamers</CardSubtitle>
                     <CardText className="d-flex justify-content-center">
                         <ul className="fa-ul">
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>artLOcus demographic statistics</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Upload video on demand content</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>DRM managent</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>artLocus' demographic statistics</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Upload video on-demand content</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>DRM Management</li>
                             <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Limited to one upload every month</li>
                         </ul>
                     </CardText>
@@ -44,13 +43,13 @@ const OurPlans = () => (
                 </Card>
                    <Card className="content">
                     <CardBody>
-                    <CardTitle className="d-flex justify-content-center">PRO</CardTitle>
+                    <CardTitle className="d-flex justify-content-center">Pro</CardTitle>
                     <CardSubtitle className="d-flex justify-content-center mb-4">Company plans for the creative industry</CardSubtitle>
                     <CardText className="d-flex justify-content-center">
                         <ul className="fa-ul">
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Subscription or monetization plans</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Promotion in the artLocus selection</li>
-                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Parnership</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Subscription as monetization plan</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Starred in artLocus' selection</li>
+                            <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Partnership</li>
                             <li><span className="fa-li"><i className="fa fa-check" aria-hidden="true"/></span>Unlimited uploads</li>
                         </ul>
                     </CardText>

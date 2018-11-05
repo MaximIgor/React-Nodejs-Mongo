@@ -2,6 +2,7 @@ import React from 'react';
 import MainLanding from '../mainLanding/mainLanding'
 import SearchResults from '../searchResults/searchResults'
 import Profile from '../profile/profile'
+import VideoView from '../videoView/VideoView'
 import { Switch, Route } from 'react-router-dom';
 
 const Main = () => (
@@ -10,6 +11,7 @@ const Main = () => (
             <Route exact path='/' component={MainLanding}/>
             <Route exact path='/searchResults' component={SearchResults}/>
             <Route exact path='/profile/:id' component={Profile}/>
+            <Route exact path='/view/:id' component={VideoView}/>
         </Switch>
     </main>
 )
