@@ -1,5 +1,6 @@
+const jwt = require('jsonwebtoken');
 
-module.exports = function(app,MongoClient,url) {
+module.exports = function(app,MongoClient,url,database) {
 
 	// api ---------------------------------------------------------------------
 
@@ -15,6 +16,82 @@ module.exports = function(app,MongoClient,url) {
 			});
 		  });
 	});
+// autenticate
+
+app.post('/api/autenticate', function(req, res) {
+
+	MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+		if (err) throw err;
+		var dbo = db.db("beduplayer");
+		dbo.collection("user").findOne({username:req.body.username},
+		function(err, result) {
+		  if (err) throw err;
+		  console.log(result)
+			if(!result){
+				res.send("Error no se encuentra el usuario")
+			}else if (result){
+				// REVISAR PASSWORD
+				if(result.pws != req.body.password){
+					res.send("Contraseña incorrecta")
+				}else{
+						// GENERAR TOKEN
+					
+						
+				var payload = {
+					admin: result
+				}
+				var token = jwt.sign(payload, 'superSecret', {
+					expiresIn: 86400 // expires in 24 hours
+				});
+
+				res.json({
+					success: true,
+					message: 'Enjoy your token!',
+					token: token
+				})
+			}
+		}
+		  db.close();
+		});
+	  });
+});
+
+//validador de Token
+
+app.use(function(req, res, next) {
+
+	// check header or url parameters or post parameters for token
+	var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+	console.log(token);
+
+	// decode token
+	if (token) {
+
+		// verifies secret and checks exp
+		jwt.verify(token, 'superSecret', function(err, decoded) {			
+			if (err) {
+				return res.json({ success: false, message: 'Failed to authenticate token.' });		
+			} else {
+				// if everything is good, save to request for use in other routes
+				req.decoded = decoded;	
+				next();
+			}
+		});
+
+	} else {
+
+		// if there is no token
+		// return an error
+		return res.status(403).send({ 
+			success: false, 
+			message: 'No token provided.'
+		});
+		
+	}
+	
+});
+
+
 
 	//RETURNS VIDEOS FOR THE "TODAYS SELECTION" SECTION
 app.get('/api/getVids', function (req, res) {
@@ -22,7 +99,7 @@ app.get('/api/getVids', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection('film').find({}).limit(6).toArray(function(err, docs) {
 					if (err) throw err;
 					res.send(docs)
@@ -37,7 +114,7 @@ app.get('/api/vid/:id', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection('film').find({}).limit(6).toArray(function(err, docs) {
 					if (err) throw err;
 					res.send(docs)
@@ -54,8 +131,8 @@ app.get('/api/getUsers', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
-			dbo.collection('user').find({}).limit(6).toArray(function(err, docs) {
+			let dbo = db.db(database.name);
+			dbo.collection('user').find({}).toArray(function(err, docs) {
 					if (err) throw err;
 					res.send(docs)
 			})
@@ -75,7 +152,7 @@ app.post('/api/search', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection('film').find({nomClip: query}).toArray(function(err, docs) {
 					if (err) throw err;
 					res.send(docs)
@@ -87,11 +164,12 @@ app.post('/api/search', function (req, res) {
 //REGISTER A NEW USER
 /***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {email: myemail@me.com} IN THE BODY OF REQUEST */
 app.post('/api/register', function (req, res) {
+
 	
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection("user").insertOne(req.body, function(err,res){
 					if (err) throw err;
 					console.log("1 document inserted");
@@ -110,7 +188,7 @@ app.post('/api/login', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection('user').findOne({username: req.body.username}, function(err, result) {
 					if (err) throw "incorrect username/password";
 
@@ -132,7 +210,7 @@ app.post('/api/uploadVid', function (req, res) {
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
 
-			let dbo = db.db(dbName);
+			let dbo = db.db(database.name);
 			dbo.collection("film").insertOne(req.body, function(err,res){
 					if (err) throw err;
 					console.log("1 document inserted");
