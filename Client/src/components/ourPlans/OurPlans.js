@@ -58,7 +58,7 @@ const OurPlans = () => (
                 </Card>
             </CardDeck>
             </div>
-            <span className="d-flex justify-content-center mt-3 mb-3"> Already a member?  <button className="ml-2 mb-3">Read more</button> </span>
+            {/*<span className="d-flex justify-content-center mt-3 mb-3"> Already a member?  <button className="ml-2 mb-3">Read more</button> </span>*/}
             </Col>
          </div >
     </Row>

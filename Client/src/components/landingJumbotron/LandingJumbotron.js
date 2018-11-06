@@ -46,11 +46,15 @@ class LandingJumbotron extends React.Component {
 
         <div className="jumbotron-overlay"/>
 
-        <div className="d-flex align-items-center justify-content-center flex-column">
-          <div>
-            <h2 className="text-center jumbotron-title">
-              The place for your cinematographic masterpiece.
-            </h2>
+          <div className="d-flex align-items-center justify-content-center flex-column">
+            <div>
+              <h2 className="text-center jumbotron-title">
+                The place for your <br/>cinematographic masterpiece.
+              </h2>
+            </div>
+            <div className="d-flex justify-content-center align-items-center mt-3">
+              <Button className="jumbotron-button py-2 px-3">Find out more</Button>
+            </div>
           </div>
           <div className="d-flex justify-content-center align-items-center mt-3">
             <Button className="jumbotron-button py-2 px-3">Find out more</Button>
