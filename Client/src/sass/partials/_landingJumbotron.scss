@@ -8,6 +8,7 @@
 }
 
 .jumbotron-button {
+  margin-top: 2em;
   background-color: rgba($sand, 0.2);
   border: 1px solid $sand;
   color: white;
@@ -38,5 +39,6 @@
 
 .jumbotron-video {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
+  width: 100%!important;
 }

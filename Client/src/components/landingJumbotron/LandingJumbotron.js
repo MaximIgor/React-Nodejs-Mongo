@@ -45,7 +45,7 @@ class LandingJumbotron extends React.Component {
       return (
         <section className="jumbotron-main container-fluid">
 
-          <YouTube className="jumbotron-video" opts={opts} videoId="katIJ9Oabb8" frameBorder="0"
+          <YouTube className="jumbotron-video" opts={opts} videoId="-rLjyz2Veis" frameBorder="0"
                    onReady={this.state._onReady}/>
 
           <div className="jumbotron-overlay"/>
@@ -53,7 +53,7 @@ class LandingJumbotron extends React.Component {
           <div className="d-flex align-items-center justify-content-center flex-column">
             <div>
               <h2 className="text-center jumbotron-title">
-                The place for your cinematographic masterpiece.
+                The place for your <br/>cinematographic masterpiece.
               </h2>
             </div>
             <div className="d-flex justify-content-center align-items-center mt-3">

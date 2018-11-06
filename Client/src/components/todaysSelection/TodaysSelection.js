@@ -22,7 +22,7 @@ class TodaysSelection extends Component {
 
         for (let i=0; i<6;i++){
             let singleClip = {...myArray[i]};
-            cardArray.push(<UnaCard name={singleClip.nomClip} desc={singleClip.descripcion} />);      
+            cardArray.push(<UnaCard key={i} name={singleClip.nomClip} desc={singleClip.descripcion} />);
         }   
         return cardArray
     }
