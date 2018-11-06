@@ -9,7 +9,7 @@ import OurPlans from '../ourPlans/OurPlans'
 const MainLanding = () => (
     <div>
         <LandingJumbotron />
-        <TodaysSelection/>
+        <TodaysSelection tsTitle="Today's Selection" tsSubtitle="Watch our top rated films of today." landing={true}/>
         <GetAPlan/>
         <Privacy />
         <OurPlans/>

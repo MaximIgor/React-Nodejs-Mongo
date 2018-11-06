@@ -7,17 +7,14 @@ class LandingJumbotron extends React.Component {
   constructor(props) {
 
     super (props)
-    // noinspection JSAnnotator
+
     this.state = {
 
       _onReady: function (event) {
         event.target.mute()
         event.target.playVideo()
         event.target.setPlaybackQuality('default')
-        // this.state.loaded = event.target.getPlayerState()
-      },
-
-      loaded: false,
+      }
     }
   }
 
@@ -40,30 +37,28 @@ class LandingJumbotron extends React.Component {
         end: '163'
       }
     };
-    //
-    // if (this.state._onLoad()) {
-      return (
-        <section className="jumbotron-main container-fluid">
 
-          <YouTube className="jumbotron-video" opts={opts} videoId="katIJ9Oabb8" frameBorder="0"
-                   onReady={this.state._onReady}/>
+    return (
+      <section className="jumbotron-main container-fluid">
 
-          <div className="jumbotron-overlay"/>
+        <YouTube className="jumbotron-video" opts={opts} videoId="katIJ9Oabb8" frameBorder="0"
+                 onReady={this.state._onReady}/>
 
-          <div className="d-flex align-items-center justify-content-center flex-column">
-            <div>
-              <h2 className="text-center jumbotron-title">
-                The place for your cinematographic masterpiece.
-              </h2>
-            </div>
-            <div className="d-flex justify-content-center align-items-center mt-3">
-              <Button className="jumbotron-button py-2 px-3">Find out more</Button>
-            </div>
+        <div className="jumbotron-overlay"/>
+
+        <div className="d-flex align-items-center justify-content-center flex-column">
+          <div>
+            <h2 className="text-center jumbotron-title">
+              The place for your cinematographic masterpiece.
+            </h2>
           </div>
-        </section>
-      )
-    }
-  // }
+          <div className="d-flex justify-content-center align-items-center mt-3">
+            <Button className="jumbotron-button py-2 px-3">Find out more</Button>
+          </div>
+        </div>
+      </section>
+    )
+  }
 }
 
 export default LandingJumbotron;

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Row, Col } from 'reactstrap';
 import UnaCard from './UnaCard/UnaCard';
 
-
 class TodaysSelection extends Component {
 
     constructor(props){
@@ -28,10 +27,10 @@ class TodaysSelection extends Component {
     }
 
     componentDidMount(){
-        
+
         fetch("/api/getVids")
-        .then((resp)=>resp.json())    
-        .then((data)=>this.setState({docsArray: {...data}}))        
+        .then((resp)=>resp.json())
+        .then((data)=>this.setState({docsArray: {...data}}))
         .catch(error => console.error(error));
     }
 
@@ -39,20 +38,22 @@ class TodaysSelection extends Component {
 
         return (
 
-    <div className="todays-bg">
-        <div className="white-overlay">
-            <Row>
-                <Col md="12" className="text-center">
-                    <span className="h2">Today's selection</span>
-                    <br/>
-                    <span>Watch today's top rated films.</span>
-                </Col>
-            </Row>
-            <Row className="first-row">           
-                {this.printCards()}
-            </Row>
-        </div>
-    </div>
-        )}};
+            <div className={this.props.landing ? "todays-bg" : "todays-bg-noimg"}>
+                <div className="white-overlay">
+                    <Row>
+                        <Col md="12" className="text-center">
+                            <span className="h2">{this.props.tsTitle}</span>
+                            <br/>
+                            <span>{this.props.tsSubtitle}</span>
+                        </Col>
+                    </Row>
+                    <Row className="first-row">
+                        {this.printCards()}
+                    </Row>
+                </div>
+            </div>
+        )
+    }
+};
 
 export default TodaysSelection;
