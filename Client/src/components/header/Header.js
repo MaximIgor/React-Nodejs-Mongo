@@ -41,7 +41,7 @@ class Header extends React.Component {
                 <Container className="align-items-md-center">
                     <Row className="py-1">
                         <Col>
-                            <h1 className="logotext">artLocus<span className="h6">®</span></h1>
+                            <Link to="/"><h1 className="logotext">artLocus<span className="h6">®</span></h1></Link>
                         </Col>
 
                         <Row className="align-items-md-center">
