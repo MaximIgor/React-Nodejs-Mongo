@@ -3,9 +3,9 @@ import { Row, Col, Button } from 'reactstrap';
 
 const Privacy = () => (
     <Row className="d-flex align-items-center privacy-main">
-        <Col md="6" className="">
+        {/*<Col md="6" className="">
             <img src={require('../../img/5_tablet.jpg')} alt="kk" style={{width: '100%'}}/>
-        </Col>
+        </Col>*/}
         <Col md="6" className="privacy-text">
             <span className="h2">Worried about piracy?</span>
             <br/><br/>
