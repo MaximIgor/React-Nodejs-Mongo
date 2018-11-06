@@ -92,7 +92,6 @@ app.use(function(req, res, next) {
 });
 
 
-
 	//RETURNS VIDEOS FOR THE "TODAYS SELECTION" SECTION
 app.get('/api/getVids', function (req, res) {
 
@@ -108,6 +107,21 @@ app.get('/api/getVids', function (req, res) {
 	})
 })
 
+	//RETURNS 12 VIDEOS FOR HOME PAGE SECTION
+app.get('/api/getHomeVids', function (req, res) {
+
+	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
+		if (err) throw err;
+
+		let dbo = db.db(database.name);
+		dbo.collection('film').find({}).limit(12).toArray(function(err, docs) {
+			if (err) throw err;
+			res.send(docs)
+		})
+		db.close()
+	})
+})
+
 //RETURNS SINGLE VIDEO FROM ID
 app.get('/api/vid/:id', function (req, res) {
 
@@ -115,14 +129,15 @@ app.get('/api/vid/:id', function (req, res) {
 			if (err) throw err;
 
 			let dbo = db.db(database.name);
-			dbo.collection('film').find({}).limit(6).toArray(function(err, docs) {
-					if (err) throw err;
+			dbo.collection('film').findOne({id: req.body.id}), function (err, result) {
+				console.log('hola')
+      }
+
+      if (err) throw err;
 					res.send(docs)
 			})
 			db.close()
-	})
 })
-
 
 /*******DELETE BEFORE PRODUCTION*******/
 //RETURNS ALL USERS IN DB

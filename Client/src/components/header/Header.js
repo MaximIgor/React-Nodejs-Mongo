@@ -37,7 +37,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid header py-3">
+            <div className="container-fluid header py-2">
                 <Container className="align-items-md-center">
                     <Row className="py-1">
                         <Col>

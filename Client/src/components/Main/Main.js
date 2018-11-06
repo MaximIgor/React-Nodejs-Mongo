@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLanding from '../mainLanding/mainLanding'
 import SearchResults from '../searchResults/searchResults'
-import Profile from '../profile/profile'
+import Profile from '../profile/Profile'
 import VideoView from '../videoView/VideoView'
 import { Switch, Route } from 'react-router-dom';
 
