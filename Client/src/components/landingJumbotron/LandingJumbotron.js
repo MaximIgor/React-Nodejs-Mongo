@@ -56,10 +56,7 @@ class LandingJumbotron extends React.Component {
               <Button className="jumbotron-button py-2 px-3">Find out more</Button>
             </div>
           </div>
-          <div className="d-flex justify-content-center align-items-center mt-3">
-            <Button className="jumbotron-button py-2 px-3">Find out more</Button>
-          </div>
-        </div>
+
       </section>
     )
   }
