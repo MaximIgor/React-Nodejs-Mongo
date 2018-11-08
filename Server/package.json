@@ -6,6 +6,7 @@
   "author": "Bedu",
   "dependencies": {
     "body-parser": "~1.5.2",
+    "cors": "^2.8.5",
     "express": "~4.7.2",
     "jsonwebtoken": "^8.3.0",
     "method-override": "~2.1.2",
