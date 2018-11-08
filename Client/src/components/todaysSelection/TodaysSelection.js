@@ -21,17 +21,24 @@ class TodaysSelection extends Component {
 
         for (let i=0; i<6;i++){
             let singleClip = {...myArray[i]};
-            cardArray.push(<UnaCard key={i} name={singleClip.nomClip} desc={singleClip.descripcion} />);
+            cardArray.push(<UnaCard key={i} name={singleClip.nomClip} desc={singleClip.descripcion} link= {singleClip.url}/>);
         }   
         return cardArray
     }
 
     componentDidMount(){
 
-        fetch("/api/getVids")
-        .then((resp)=>resp.json())
-        .then((data)=>this.setState({docsArray: {...data}}))
-        .catch(error => console.error(error));
+   
+         fetch('http://localhost:8080/api/getVids', {
+            method: 'GET',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'x-access-token' : 'REQUESTGUESTUSER'
+            }
+        }).then(response => response.json())
+        .then(data => this.setState({docsArray: {...data}}));
+
     }
 
     render(){

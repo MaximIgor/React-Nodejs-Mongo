@@ -5,7 +5,7 @@ import { Card, CardImg, CardBody, CardTitle, CardText } from 'reactstrap';
 const unCard = (props) => (
     <Col md="4">
         <Card className="my-2 unaCard">
-            <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+            <iframe  src={props.link} height="200" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             <CardBody>
                 <CardTitle>{props.name}</CardTitle>
                 <CardText>{props.desc}</CardText>

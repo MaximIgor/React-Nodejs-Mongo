@@ -8,12 +8,14 @@ let morgan = require('morgan');
 let bodyParser = require('body-parser'); 	
 let methodOverride = require('method-override'); 
 
+var cors = require('cors');
+
 // configuration ===============================================================
 const MongoClient = require('mongodb').MongoClient;	
 // Connection URL
 const url = database.url;
 
-			
+app.use(cors());
 app.use(morgan('dev')); 										
 app.use(bodyParser.urlencoded({'extended':'true'})); 			
 app.use(bodyParser.json()); 									
