@@ -18,7 +18,7 @@ module.exports = function(app,MongoClient,url,database) {
 	});
 // autenticate
 
-app.post('/api/autenticate', function(req, res) {
+app.post('/api/authenticate', function(req, res) {
 
 	MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
 		if (err) throw err;
@@ -28,26 +28,25 @@ app.post('/api/autenticate', function(req, res) {
 		  if (err) throw err;
 		  console.log(result)
 			if(!result){
-				res.send("Error no se encuentra el usuario")
+				res.send({msg : "Error_001"})
 			}else if (result){
 				// REVISAR PASSWORD
-				if(result.pws != req.body.password){
-					res.send("Contraseña incorrecta")
+				if(result.psw != req.body.password){
+					res.send({msg : "Error_002"})
 				}else{
-						// GENERAR TOKEN
-					
-						
+				// GENERAR TOKEN
+							
 				var payload = {
 					admin: result
 				}
 				var token = jwt.sign(payload, 'superSecret', {
 					expiresIn: 86400 // expires in 24 hours
 				});
-
+				// REGRESA ROKEN ,STATUS y USUARIO 
 				res.json({
 					success: true,
-					message: 'Enjoy your token!',
-					token: token
+					token: token,
+					username:req.body.username
 				})
 			}
 		}

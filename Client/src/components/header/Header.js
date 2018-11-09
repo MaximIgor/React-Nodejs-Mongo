@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Breadcrumb, BreadcrumbItem, Input, FormGroup, Label, Form} from 'reactstrap'
+import { Alert, Container, Row, Col, Button, Modal, ModalHeader, ModalBody, ModalFooter, Breadcrumb, BreadcrumbItem, Input, FormGroup, Label, Form} from 'reactstrap'
 import { Link } from 'react-router-dom';
+import { Route, Redirect} from 'react-router';
 
 class Header extends React.Component {
 
@@ -10,8 +11,21 @@ class Header extends React.Component {
             modalToggle: false,
             login: false,
             register: true,
-            search: ''
+            search: '',
+            username:'', // USERNAME LOGIN
+            password:'',  // PASSWORD LOGIN
+            dialogError:'', // TEXTO ERROR
+            alert: false,    // PRENDER APAGAR ALERTAS,
+            // REGISTRER
+            usernameReg : '', // USERNAME REGISTER
+            mailReg:'',        // MAIL REGISTER
+            passReg : '',      // PASSWORD
+            redirect: ''
+
+
+
         };
+
 
         // this.toggle = this.toggle.bind(this);
         // this.loginToggle = this.loginToggle.bind(this);
@@ -27,17 +41,66 @@ class Header extends React.Component {
         this.setState({login: !this.state.login})
     }
 
+
+    // ======================   LOGIN =============================
+
+    autenticate = e => {
+    e.preventDefault();
+         fetch('http://localhost:8080/api/authenticate', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+         body: JSON.stringify(
+             {username: this.state.username, 
+              password: this.state.password}
+             )
+        }).then(response => response.json())
+          .then((data) => {
+
+                console.log(data)
+                if(data.msg == 'Error_001'){ // ERROR USERNAME NOT FOUND
+                    this.setState({alert: true , dialogError : "Wrong Username, Please Try Again"})
+                }else if (data.msg == "Error_002"){ // ERROR WRONG PASSWORD
+                    this.setState({alert: true , dialogError : "Wrong Password, Please Try Again"})
+                }else {
+                    
+                    // SET LOCAL STORAGE TOKEN
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('username' , data.username);  
+                    // REDIRECT TO PAGE
+                    window.location.replace("/profile");                
+                }
+          })
+          .catch((error)=>error);          
+    }
+
+  
+
+    change = e => { // PUSH DATA TO STATE 
+        this.setState({
+            [e.target.name] : e.target.value,
+            alert:false
+        })
+    }
+
+
+
+
+
+    // ====================== END  LOGIN =============================
+
+
     searchInput = (event) =>{        
         this.setState({
             search: event.target.value
         });
-        console.log(this.state.search);
-        
+        console.log(this.state.search);   
     }
 
     render() {
         return (
-            <div className="container-fluid header py-2">
                 <Container className="align-items-md-center">
                     <Row className="py-1">
                         <Col>
@@ -67,50 +130,97 @@ class Header extends React.Component {
                                         <ModalBody>
                                             {
                                                 this.state.login ?
-                                                    <Form>
+                                                    <Form id="login"> {/* LOGIN USER */}
                                                         <span className="h5 text-center">Login to your account</span>
                                                         <FormGroup className="mt-3">
                                                             <Label for="userLogin">Username</Label>
-                                                            <Input type="text" name="userLogin" id="userLogin" placeholder="Username" />
+                                                            <Input  type="text" 
+                                                                    name="username" 
+                                                                    id= "username"
+                                                                    placeholder="Username"
+                                                                    value={this.state.username} 
+                                                                    onChange={e=> this.change(e)}
+                                                            />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="passLogin">Password</Label>
-                                                            <Input type="password" name="passLogin" id="passLogin" placeholder="Password" />
+                                                            <Input  type="password" 
+                                                                    name="password" 
+                                                                    id="password"
+                                                                    placeholder="Password" 
+                                                                    value={this.state.password}
+                                                                    onChange={e=> this.change(e)}
+                                                            />
                                                         </FormGroup>
                                                     </Form>
                                                     :
-                                                    <Form>
+                                                    <Form>         {/* REGISTER USER */}
                                                         <span className="h5 text-center">Join artLocus today!</span>
                                                         <FormGroup className="mt-3">
                                                             <Label for="usernameReg">Choose a username</Label>
-                                                            <Input type="text" name="usernameReg" id="usrReg" placeholder="Write your username" />
+                                                            <Input  type="text" 
+                                                                    name="usernameReg" 
+                                                                    id="usrReg" 
+                                                                    placeholder="Write your username" 
+          
+                                                            />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="mailReg">E-mail</Label>
-                                                            <Input type="email" name="mailReg" id="mailReg" placeholder="Enter a valid e-mail" />
+                                                            <Input  type="email" 
+                                                                    name="mailReg" 
+                                                                    id="mailReg" 
+                                                                    placeholder="Enter a valid e-mail" 
+             
+                                                                    />
                                                         </FormGroup>
                                                         <FormGroup>
                                                             <Label for="passReg">Password</Label>
-                                                            <Input type="password" name="passReg" id="passReg" placeholder="Choose a strong password" />
+                                                            <Input  type="password" 
+                                                                    name="passReg" 
+                                                                    id="passReg" 
+                                                                    placeholder="Choose a strong password" 
+         
+                                                                    
+                                                                    />
                                                         </FormGroup>
                                                     </Form>
                                             }
+
+                                            {
+                                                this.state.alert && <div>
+                                                <Alert color="danger">
+                                                   <p>{this.state.dialogError}</p>
+                                                 </Alert>
+                                                </div>
+
+                                            
+                                            }                                  
+
                                         </ModalBody>
                                         <ModalFooter>
                                             {
                                                 this.state.login ?
-                                                    <Button className="loginbutton">Login</Button> :
+                                                    <Button className="loginbutton" 
+                                                            form="login" 
+                                                            type="submit"
+                                                            onClick={e=> this.autenticate(e)}
+                                                            >
+                                                            Login
+                                                    </Button> :
                                                     <Button className="loginbutton">Register</Button>
                                             }
                                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+
+
+
                                         </ModalFooter>
                                     </Modal>
                             </Col>
                         </Row>
                     </Row>
-                </Container>
-            </div>
-        );
+                </Container> 
+        )
     }
 }
 

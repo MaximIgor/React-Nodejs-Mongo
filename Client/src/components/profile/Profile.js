@@ -12,18 +12,16 @@ class Profile extends React.Component {
 
     this.state = {
       collapse: false,
-      videosArray: []
+      videosArray: [],
+      uName: ''
     };
-
-    this.toggle = this.toggle.bind(this);
-    this.renderVideos = this.renderVideos.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ collapse: !this.state.collapse });
   }
 
-  renderVideos() {
+  renderVideos = () => {
     let temp = {...this.state.videosArray};
     let cardArray = [];
 
@@ -34,9 +32,28 @@ class Profile extends React.Component {
     return cardArray
   }
 
+  getStorage = () => {
+    this.setState({uName: localStorage.getItem('username'),token: localStorage.getItem('token')});
+    console.log(this.state.uName);
+    
+    return this.state.uName
+
+    // console.log(localStorage.getItem('username'));
+    
+    
+  }
+
   componentDidMount(){
 
-    fetch("/api/getHomeVids")
+    this.getStorage();
+
+    fetch('http://localhost:8080/api/getHomeVids', {
+            method: 'GET',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'x-access-token' : 'REQUESTGUESTUSER'
+            }})
     .then((resp)=>resp.json())
     .then((data)=>this.setState({videosArray: {...data}}))
     .catch(error => console.error(error));
@@ -48,7 +65,7 @@ class Profile extends React.Component {
 
         <Row className="mx-5 d-flex py-5 align-items-center justify-content-center">
           <Col md="8" className="pl-5">
-            <span className="h1">Username</span>
+            <span className="h1">{this.state.uName}</span>
             <br/>
             <span className="h4">Member since 2017</span>
           </Col>
