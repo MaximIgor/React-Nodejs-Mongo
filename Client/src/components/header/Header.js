@@ -19,18 +19,15 @@ class Header extends React.Component {
             // REGISTRER
             usernameReg : '', // USERNAME REGISTER
             mailReg:'',        // MAIL REGISTER
-            passReg : '',      // PASSWORD
+            passReg : '',       // PASSWORD
+            userType: '',       //USER TYPE     
             redirect: ''
 
 
 
         };
-
-
-        // this.toggle = this.toggle.bind(this);
-        // this.loginToggle = this.loginToggle.bind(this);
     }
-
+        
     toggle= () => {
         this.setState({
             modalToggle: !this.state.modalToggle
@@ -76,7 +73,46 @@ class Header extends React.Component {
           .catch((error)=>error);          
     }
 
-  
+    // ====================== END  LOGIN =============================
+
+
+    // ======================  BEGIN REGISTER ========================
+
+    regUser = (e) =>{
+        e.preventDefault();
+        fetch('http://localhost:8080/api/register', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+         body: JSON.stringify(
+             {  username: this.state.usernameReg,
+                email: this.state.mailReg,
+                password: this.state.passReg,
+                usertype: this.state.userType  }
+             )
+        }).then(response => response.json())
+          .then((data) => {
+            console.log(data)
+            if(data.msg == 'Error_001'){ // ERROR USERNAME NOT FOUND
+                this.setState({alert: true , dialogError : "Wrong Username, Please Try Again"})
+            }else if (data.msg == "Error_002"){ // ERROR WRONG PASSWORD
+                this.setState({alert: true , dialogError : "Wrong Password, Please Try Again"})
+            }else {
+                
+                // SET LOCAL STORAGE TOKEN
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('username' , data.username);  
+                // REDIRECT TO PAGE
+                window.location.replace("/profile");                
+            }
+          }).catch((err)=>console.log(err));
+        
+    }
+
+    // ======================  END REGISTER ========================
+
 
     change = e => { // PUSH DATA TO STATE 
         this.setState({
@@ -84,14 +120,6 @@ class Header extends React.Component {
             alert:false
         })
     }
-
-
-
-
-
-    // ====================== END  LOGIN =============================
-
-
     searchInput = (event) =>{        
         this.setState({
             search: event.target.value
@@ -162,6 +190,8 @@ class Header extends React.Component {
                                                                     name="usernameReg" 
                                                                     id="usrReg" 
                                                                     placeholder="Write your username" 
+                                                                    value={this.state.usernameReg} 
+                                                                    onChange={e=> this.change(e)}
           
                                                             />
                                                         </FormGroup>
@@ -171,6 +201,8 @@ class Header extends React.Component {
                                                                     name="mailReg" 
                                                                     id="mailReg" 
                                                                     placeholder="Enter a valid e-mail" 
+                                                                    value={this.state.mailReg} 
+                                                                    onChange={e=> this.change(e)}
              
                                                                     />
                                                         </FormGroup>
@@ -179,10 +211,31 @@ class Header extends React.Component {
                                                             <Input  type="password" 
                                                                     name="passReg" 
                                                                     id="passReg" 
-                                                                    placeholder="Choose a strong password" 
-         
-                                                                    
+                                                                    placeholder="Choose a strong password"
+                                                                    value={this.state.passReg}
+                                                                    onChange={e=> this.change(e)}
                                                                     />
+                                                           <FormGroup tag="fieldset">
+                                                                <legend>Select your plan:</legend>
+                                                                <FormGroup check>
+                                                                    <Label check>
+                                                                    <Input type="radio" name="userType" value="1" onClick={e=> this.change(e)} />{' '}
+                                                                    Pro
+                                                                    </Label>
+                                                                </FormGroup>
+                                                                <FormGroup check>
+                                                                    <Label check>
+                                                                    <Input type="radio" name="userType" value="2" onClick={e=> this.change(e)}/>{' '}
+                                                                    Creative
+                                                                    </Label>
+                                                                </FormGroup>
+                                                                <FormGroup check>
+                                                                    <Label check>
+                                                                    <Input type="radio" name="userType" value="3" onClick={e=> this.change(e)}/>{' '}
+                                                                    Free
+                                                                    </Label>
+                                                                </FormGroup>
+                                                            </FormGroup>
                                                         </FormGroup>
                                                     </Form>
                                             }
@@ -208,7 +261,7 @@ class Header extends React.Component {
                                                             >
                                                             Login
                                                     </Button> :
-                                                    <Button className="loginbutton">Register</Button>
+                                                    <Button className="loginbutton" onClick={e=> this.regUser(e)}>Register</Button>
                                             }
                                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
 
