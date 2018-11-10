@@ -2,7 +2,9 @@ import React from 'react'
 import { Row, Col, Button, Collapse } from 'reactstrap'
 import { Circle } from 'rc-progress'
 import { VictoryChart, VictoryGroup, VictoryArea } from 'victory'
-import UnaCard from "../todaysSelection/UnaCard/UnaCard";
+import UnaCard from '../todaysSelection/UnaCard/UnaCard';
+import '../../sass/main.scss'
+
 
 class Profile extends React.Component {
 
@@ -27,7 +29,7 @@ class Profile extends React.Component {
 
     for (let i=0; i<9;i++){
       let clip = {...temp[i]};
-      cardArray.push(<UnaCard name={clip.nomClip} desc={clip.descripcion} />);
+      cardArray.push(<UnaCard name={clip.nomClip} desc={clip.descripcion} link= {clip.url}/>);
     }
     return cardArray
   }
@@ -37,10 +39,6 @@ class Profile extends React.Component {
     console.log(this.state.uName);
     
     return this.state.uName
-
-    // console.log(localStorage.getItem('username'));
-    
-    
   }
 
   componentDidMount(){

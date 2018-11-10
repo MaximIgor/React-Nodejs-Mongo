@@ -31,7 +31,7 @@ app.post('/api/authenticate', function(req, res) {
 				res.send({msg : "Error_001"})
 			}else if (result){
 				// REVISAR PASSWORD
-				if(result.psw != req.body.password){
+				if(result.password != req.body.password){
 					res.send({msg : "Error_002"})
 				}else{
 				// GENERAR TOKEN
@@ -53,6 +53,37 @@ app.post('/api/authenticate', function(req, res) {
 		  db.close();
 		});
 	  });
+});
+
+
+//REGISTER A NEW USER
+app.post('/api/register', function (req, res) {
+
+	console.log(req.body);
+
+	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
+			if (err) throw err;
+			let dbo = db.db("beduplayer");
+			dbo.collection("user").insertOne(req.body, function(err,result){
+					if (err) throw err;
+					console.log("1 document inserted");
+					console.log(result);
+
+					var payload = {
+						admin: result
+					}
+					var token = jwt.sign(payload, 'superSecret', {
+						expiresIn: 86400 // expires in 24 hours
+					});
+					// REGRESA ROKEN ,STATUS y USUARIO 
+					res.json({
+						success: true,
+						token: token,
+						username:req.body.username
+					})
+			});
+				db.close();
+	});  
 });
 
 //validador de Token
@@ -179,23 +210,6 @@ app.post('/api/search', function (req, res) {
 	})
 })
 
-//REGISTER A NEW USER
-/***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {email: myemail@me.com} IN THE BODY OF REQUEST */
-app.post('/api/register', function (req, res) {
-
-	
-	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
-			if (err) throw err;
-
-			let dbo = db.db(database.name);
-			dbo.collection("user").insertOne(req.body, function(err,res){
-					if (err) throw err;
-					console.log("1 document inserted");
-			});
-			res.send('User added to the database successfully');
-			db.close();
-	});  
-});
 
 //LOGIN USER
 /***NOTE: ENDPOINT EXPECTS KEY VALUE PAIRS {email: myemail@me.com} IN THE BODY OF REQUEST */
