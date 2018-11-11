@@ -1,0 +1,226 @@
+.logotext {
+  color: #31697A;
+  font-weight: 300;
+  text-decoration: none; }
+
+.logotext:hover {
+  text-decoration: none; }
+
+.loginbutton {
+  background-color: #31697A;
+  border: none;
+  font-size: 15px; }
+
+.header {
+  background-color: #31697A;
+  padding: 0 !important; }
+
+.searchbutton {
+  background-color: white;
+  border-top: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  color: #31697A; }
+
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.jumbotron-main {
+  height: 95vh;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+
+.jumbotron-button {
+  margin-top: 2em;
+  background-color: rgba(207, 203, 187, 0.2);
+  border: 1px solid #CFCBBB;
+  color: white;
+  font-weight: 500;
+  z-index: 2; }
+
+.jumbotron-button:hover {
+  background-color: rgba(207, 203, 187, 0.5); }
+
+.jumbotron-overlay {
+  background: black;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1; }
+
+.jumbotron-title {
+  color: white;
+  position: relative;
+  z-index: 2;
+  margin-top: 35%;
+  font-size: 40px; }
+
+.jumbotron-video {
+  position: absolute;
+  z-index: 1;
+  width: 100% !important; }
+
+.todays-bg {
+  background: url("../img/9_lens.jp2") no-repeat bottom center;
+  margin: 0;
+  padding: 40px; }
+
+.todays-bg-noimg {
+  margin: 0;
+  padding: 40px; }
+
+.white-overlay {
+  background-color: rgba(207, 203, 187, 0.15);
+  padding: 30px;
+  border-radius: 15px;
+  position: relative;
+  width: auto; }
+
+.first-row {
+  margin: 30px 0 30px 0; }
+
+.second-row {
+  margin: 0; }
+
+.gap-hrline {
+  border: 2px solid #31697A; }
+
+.gap-button {
+  background-color: #DF273D;
+  border: none;
+  padding: 15px 20px 15px 20px; }
+
+.gap-link {
+  color: #31697A; }
+
+.gap-img {
+  background: url("../img/10_camera.png") no-repeat center bottom;
+  background-size: 450px 502px;
+  height: 500px;
+  position: center;
+  margin-bottom: 0; }
+
+.privacy-main {
+  background: url("../img/12_corto.jpg") fixed no-repeat;
+  background-size: 100%;
+  padding: 50px;
+  min-height: 40em; }
+
+.privacy-text {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 15px; }
+
+.privacy-hrline {
+  border: 2px solid grey; }
+
+.privacy-button {
+  background-color: #DF273D;
+  border: none;
+  padding: 15px 20px 15px 20px; }
+
+.ourplans1 {
+  background: url("../img/13_game.jpg") no-repeat center center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #000000; }
+
+.ourplans2 {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 1%;
+  padding: 4%;
+  margin-top: 2%; }
+
+.CardTitle {
+  font-weight: 700; }
+
+.content {
+  background: rgba(207, 203, 187, 0.7);
+  border-radius: 2%;
+  text-align: center;
+  border: none; }
+
+#cards {
+  border-radius: 10%;
+  height: auto;
+  border: none; }
+
+.bntregister {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #00677D;
+  color: white;
+  margin-left: 50%; }
+
+.fa-li {
+  color: #6ce0fa; }
+
+.principal {
+  color: white;
+  font-size: small; }
+
+.lista {
+  list-style: none; }
+
+.principal {
+  background-color: #31697A;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
+hr {
+  border: 2px solid #DF273D; }
+
+.col-lg {
+  margin-left: 0;
+  position: relative;
+  right: 5%; }
+
+h5 > li, h4 > li {
+  list-style: none;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.profile-progress {
+  margin-left: 3%;
+  position: relative; }
+
+.profile-float {
+  width: 100%; }
+
+.profile-chart {
+  font-family: "Raleway", sans-serif; }
+
+.principal {
+  background: #31697A; }
+
+.unaCard {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; }
+
+.unaCard:hover {
+  -webkit-box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2); }
+
+body {
+  font-family: "Raleway", sans-serif; }

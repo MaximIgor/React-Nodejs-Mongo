@@ -119,6 +119,10 @@ class Header extends React.Component {
         window.location.replace("/");
     }  
 
+    gotoProfile = () =>{
+        window.location.replace("/profile");
+    }
+
     change = e => { // PUSH DATA TO STATE 
         this.setState({
             [e.target.name] : e.target.value,
@@ -134,7 +138,7 @@ class Header extends React.Component {
 
     componentDidMount(){
         if (localStorage.getItem('username')!= null)
-            this.setState({userLoggedin: true});
+            this.setState({userLoggedin: true});            
     }
 
     render() {
@@ -143,20 +147,27 @@ class Header extends React.Component {
                 <Container className="align-items-md-center">
                     <Row className="py-1">
                         <Col>
-                            <Link to="/"><h1 className="logotext">artLocus<span className="h6">®</span></h1></Link>
+                            <Link style={{ textDecoration: 'none'}} to="/"><h1 className="logotext">artLocus<span className="h6">®</span></h1></Link>                       
                         </Col>
-
                         <Row className="align-items-md-center">
                             <Col className="input-group align-items-md-center">
                                 <input type="text" className="form-control" placeholder="Search" onChange={(e)=>this.searchInput(e)}/>
                                 <div className="input-group-append">
-                                    <button className="btn searchbutton" type="submit"><Link to={`/searchResults/${this.state.search}`}><span className="fas fa-search"></span></Link></button>
+                                <Link to={`/searchResults/${this.state.search}`}> 
+                                    <button className="btn searchbutton" type="submit">
+                                     <span className="fas fa-search"></span>
+                                    </button>
+                                </Link>
                                 </div>
                             </Col>
                             <Col md="6 a">
                             {
                                 this.state.userLoggedin ?
-                                <Button className="loginbutton py-2" size="lg" onClick={this.logout}>Logout</Button> :
+                                <div>
+                                    <Button className="loginbutton py-2" size="lg" onClick={this.logout}>Logout</Button>
+                                    <Button className="loginbutton py-2" size="lg" onClick={this.gotoProfile}>My Profile</Button>
+                                </div> :
+
                                 <Button className="loginbutton py-2" size="lg" onClick={this.toggle}>Login or Register</Button>
                             }
                                     <Modal isOpen={this.state.modalToggle} toggle={this.toggle}>
