@@ -15,24 +15,29 @@ class SearchResults extends Component {
     printCards() {
         let myArray =this.state.docsArray;
         let cardArray = [];
+
+        console.log(myArray);
+        
                 
         for (let i=0; i<myArray.length;i++){
             let singleClip = {...myArray[i]};
-            cardArray.push(<UnaCard name={singleClip.nomClip} desc={singleClip.descripcion} />);      
+            cardArray.push(<UnaCard name={singleClip.nomClip} desc={singleClip.descripcion} link= {singleClip.url} />);      
         }   
         return cardArray
     }
 
     componentDidMount(){
-        let searchWord = this.props.match.params.id;
-        axios.post('/api/search',{
-            search: searchWord
-        })   
-        .then((data)=>{
-            let results = JSON.parse(data.request.response);
-            this.setState({docsArray: results});
-            console.log(this.state.docsArray); 
-        })
+       
+        fetch('http://localhost:8080/api/search', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'x-access-token' : 'REQUESTGUESTUSER'
+            },
+            body: JSON.stringify({  search: this.props.match.params.id})
+        }).then(response => response.json())  
+        .then(data => this.setState({docsArray: data}))
         .catch(error => console.error(error));
     }
 

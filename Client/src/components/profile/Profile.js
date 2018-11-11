@@ -35,16 +35,23 @@ class Profile extends React.Component {
   }
 
   getStorage = () => {
-    this.setState({uName: localStorage.getItem('username'),token: localStorage.getItem('token')});
-    console.log(this.state.uName);
-    
-    return this.state.uName
+    this.setState({
+      username: localStorage.getItem('username'),
+      token: localStorage.getItem('token'),
+      date: localStorage.getItem('date'),
+      usertype: localStorage.getItem('usertype')
+    });
   }
 
   componentDidMount(){
 
     this.getStorage();
 
+    if (localStorage.getItem('username') == null){
+      alert('please log in first');
+    return window.location.replace("/");
+    }
+    
     fetch('http://localhost:8080/api/getHomeVids', {
             method: 'GET',
             headers: {
@@ -63,9 +70,9 @@ class Profile extends React.Component {
 
         <Row className="mx-5 d-flex py-5 align-items-center justify-content-center">
           <Col md="8" className="pl-5">
-            <span className="h1">{this.state.uName}</span>
+            <span className="h1">{this.state.username}</span>
             <br/>
-            <span className="h4">Member since 2017</span>
+            <span className="h4">{this.state.date}</span>
           </Col>
           <Col md="4" className="d-flex align-items-center justify-content-around">
             <Button><i className="fas fa-upload fa-2x"/></Button>

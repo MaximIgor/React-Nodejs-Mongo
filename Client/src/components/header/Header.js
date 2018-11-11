@@ -21,7 +21,7 @@ class Header extends React.Component {
             mailReg:'',        // MAIL REGISTER
             passReg : '',       // PASSWORD
             userType: '',       //USER TYPE     
-            redirect: ''
+            userLoggedin: false
 
 
 
@@ -61,11 +61,13 @@ class Header extends React.Component {
                     this.setState({alert: true , dialogError : "Wrong Username, Please Try Again"})
                 }else if (data.msg == "Error_002"){ // ERROR WRONG PASSWORD
                     this.setState({alert: true , dialogError : "Wrong Password, Please Try Again"})
-                }else {
-                    
+                }else {                    
                     // SET LOCAL STORAGE TOKEN
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('username' , data.username);  
+                    localStorage.setItem('date' , data.date);  
+                    localStorage.setItem('usertype' , data.usertype); 
+
                     // REDIRECT TO PAGE
                     window.location.replace("/profile");                
                 }
@@ -80,6 +82,7 @@ class Header extends React.Component {
 
     regUser = (e) =>{
         e.preventDefault();
+        let fecha = new Date();
         fetch('http://localhost:8080/api/register', {
             method: 'POST',
             headers: {
@@ -90,29 +93,31 @@ class Header extends React.Component {
              {  username: this.state.usernameReg,
                 email: this.state.mailReg,
                 password: this.state.passReg,
-                usertype: this.state.userType  }
+                usertype: this.state.userType, 
+                date: fecha
+              }
              )
         }).then(response => response.json())
           .then((data) => {
-            console.log(data)
-            if(data.msg == 'Error_001'){ // ERROR USERNAME NOT FOUND
-                this.setState({alert: true , dialogError : "Wrong Username, Please Try Again"})
-            }else if (data.msg == "Error_002"){ // ERROR WRONG PASSWORD
-                this.setState({alert: true , dialogError : "Wrong Password, Please Try Again"})
-            }else {
+                console.log(data);
                 
                 // SET LOCAL STORAGE TOKEN
                 localStorage.setItem('token', data.token);
-                localStorage.setItem('username' , data.username);  
+                localStorage.setItem('username' , data.username); 
+                localStorage.setItem('date' , data.date);  
+                localStorage.setItem('usertype' , data.usertype); 
                 // REDIRECT TO PAGE
                 window.location.replace("/profile");                
-            }
           }).catch((err)=>console.log(err));
         
     }
 
     // ======================  END REGISTER ========================
 
+    logout = () =>{
+        localStorage.clear();
+        window.location.replace("/");
+    }  
 
     change = e => { // PUSH DATA TO STATE 
         this.setState({
@@ -127,7 +132,13 @@ class Header extends React.Component {
         console.log(this.state.search);   
     }
 
+    componentDidMount(){
+        if (localStorage.getItem('username')!= null)
+            this.setState({userLoggedin: true});
+    }
+
     render() {
+
         return (
                 <Container className="align-items-md-center">
                     <Row className="py-1">
@@ -143,7 +154,11 @@ class Header extends React.Component {
                                 </div>
                             </Col>
                             <Col md="6 a">
+                            {
+                                this.state.userLoggedin ?
+                                <Button className="loginbutton py-2" size="lg" onClick={this.logout}>Logout</Button> :
                                 <Button className="loginbutton py-2" size="lg" onClick={this.toggle}>Login or Register</Button>
+                            }
                                     <Modal isOpen={this.state.modalToggle} toggle={this.toggle}>
                                         <ModalHeader toggle={this.toggle}>
                                             <Breadcrumb  onClick={this.loginToggle} >
