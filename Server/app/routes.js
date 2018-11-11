@@ -28,7 +28,7 @@ app.post('/api/authenticate', function(req, res) {
 		  if (err) throw err;
 		  console.log(result)
 			if(!result){
-				res.send({msg : "Error_001"})
+				res.send({msg : "Error_001"})// REVISAR USERNAME
 			}else if (result){
 				// REVISAR PASSWORD
 				if(result.password != req.body.password){
@@ -46,7 +46,9 @@ app.post('/api/authenticate', function(req, res) {
 				res.json({
 					success: true,
 					token: token,
-					username:req.body.username
+					username:req.body.username,
+					date: result.date,
+					usertype: result.usertype
 				})
 			}
 		}
@@ -59,7 +61,7 @@ app.post('/api/authenticate', function(req, res) {
 //REGISTER A NEW USER
 app.post('/api/register', function (req, res) {
 
-	console.log(req.body);
+	// console.log(req.body);
 
 	MongoClient.connect(url,{ useNewUrlParser: true }, function (err,db) {
 			if (err) throw err;
@@ -67,7 +69,7 @@ app.post('/api/register', function (req, res) {
 			dbo.collection("user").insertOne(req.body, function(err,result){
 					if (err) throw err;
 					console.log("1 document inserted");
-					console.log(result);
+					// console.log(result);
 
 					var payload = {
 						admin: result
@@ -77,9 +79,11 @@ app.post('/api/register', function (req, res) {
 					});
 					// REGRESA ROKEN ,STATUS y USUARIO 
 					res.json({
-						success: true,
-						token: token,
-						username:req.body.username
+					success: true,
+					token: token,
+					username:req.body.username,
+					date: req.body.date,
+					usertype: req.body.usertype
 					})
 			});
 				db.close();
