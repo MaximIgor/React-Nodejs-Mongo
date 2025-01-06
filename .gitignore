@@ -6,3 +6,4 @@
 .idea/watcherTasks.xml
 .idea/workspace.xml
 /Client/src/sass/prepros-6.config
+node_modules
